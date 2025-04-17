@@ -65,6 +65,7 @@
             try {
                 const response = await fetch(url);
                 const result = await response.json();
+                console.log('API response:', result);
                 if (result.values) {
                     data = result.values.slice(1).map(row => ({
                         timestamp: row[0],
@@ -80,9 +81,10 @@
                         test3Picture: row[10] || '',
                         test3Checklist: row[11] || ''
                     }));
+                    console.log('Processed data:', data);
                     processData();
                 } else {
-                    console.error('Error fetching data:', result);
+            console.error('Error fetching data:', result);
                 }
             } catch (error) {
                 console.error('Fetch error:', error);
